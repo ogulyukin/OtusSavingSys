@@ -2299,7 +2299,7 @@ GameObject:
   - component: {fileID: 482314}
   - component: {fileID: -6780732715649493285}
   m_Layer: 0
-  m_Name: Orc_archer
+  m_Name: Orc_Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
