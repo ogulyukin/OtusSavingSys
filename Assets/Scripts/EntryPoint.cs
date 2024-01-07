@@ -1,6 +1,9 @@
 using GameEngine;
 using UnityEngine;
 
+
+//Этот класс нигде не используется!!! оставлен как легаси код
+
 //TODO: Удалить этот класс!
 //Развернуть архитектуру на Zenject/VContainer/Custom
 public sealed class EntryPoint : MonoBehaviour

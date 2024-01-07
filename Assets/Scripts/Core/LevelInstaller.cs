@@ -19,7 +19,15 @@ namespace Core
             Container.Bind<ResourceService>().AsSingle();
             Container.Bind<UnitsPrefabStorage>().FromInstance(prefabStorage).AsSingle();
             Container.Bind<SavingSystemHelper>().FromInstance(helper).AsSingle();
-            Container.Bind<SceneSaveSystemManager>().AsSingle();
+            Container.Bind<SceneSaveManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
+            InstallISaveAbles();
+        }
+
+        private void InstallISaveAbles()
+        {
+            Container.BindInterfacesTo<UnitSavingManager>().AsSingle();
+            Container.BindInterfacesTo<ResourceSavingManager>().AsSingle();
         }
     }
 }

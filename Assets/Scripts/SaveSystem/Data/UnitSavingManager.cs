@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameEngine;
 using SaveSystem.Core;
 using UnityEngine;
@@ -8,14 +9,14 @@ using Object = UnityEngine.Object;
 
 namespace SaveSystem.Data
 {
-    public class UnitSavingEntity : ISaveAble
+    public class UnitSavingManager : ISaveAble
     {
         private readonly UnitManager unitsManager;
         private readonly UnitsPrefabStorage prefabStorage;
         private readonly List<Dictionary<string, string>> units = new();
-        private Transform unitsRoot;
+        private readonly Transform unitsRoot;
 
-        public UnitSavingEntity(UnitManager manager, UnitsPrefabStorage storage, Transform root)
+        public UnitSavingManager(UnitManager manager, UnitsPrefabStorage storage, Transform root)
         {
             unitsManager = manager;
             prefabStorage = storage;
@@ -49,7 +50,7 @@ namespace SaveSystem.Data
 
         public void RestoreState(List<Dictionary<string, string>> loadedData)
         {
-            DestroyAllExistingUnits();
+            DestroyAllUnits();
             InitUnitsList(loadedData);
 
             var unitsList = new List<Unit>();
@@ -79,12 +80,12 @@ namespace SaveSystem.Data
             }
         }
 
-        private void DestroyAllExistingUnits()
+        private void DestroyAllUnits()
         {
-            foreach (var unit in unitsManager.GetAllUnits())
+            var unitList = unitsManager.GetAllUnits().ToList();
+            for(var i = 0; i < unitList.Count(); i++)
             {
-                //Clearing unitManager if scene was not fully reloaded
-                unitsManager.DestroyUnit(unit);
+                unitsManager.DestroyUnit(unitList[i]);
             }
             var existingUnits = Object.FindObjectsOfType<Unit>();
             foreach (var unit in existingUnits)

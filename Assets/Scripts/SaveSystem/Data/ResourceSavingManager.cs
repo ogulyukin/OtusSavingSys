@@ -7,12 +7,12 @@ using Object = UnityEngine.Object;
 
 namespace SaveSystem.Data
 {
-    public class ResourceSavingEntity : ISaveAble
+    public class ResourceSavingManager : ISaveAble
     {
         private readonly ResourceService resourceService;
         private readonly List<Dictionary<string, string>> resources = new();
 
-        public ResourceSavingEntity(ResourceService service)
+        public ResourceSavingManager(ResourceService service)
         {
             resourceService = service;
         }

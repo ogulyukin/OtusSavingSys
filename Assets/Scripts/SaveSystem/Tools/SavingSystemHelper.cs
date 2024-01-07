@@ -7,28 +7,23 @@ namespace SaveSystem.Tools
 {
     public class SavingSystemHelper : MonoBehaviour
     {
-        private SceneSaveSystemManager sceneSaveSystemManager;
+        private SceneSaveManager sceneSaveManager;
         [Inject]
-        private void Construct(SceneSaveSystemManager manager)
+        private void Construct(SceneSaveManager manager)
         {
-            sceneSaveSystemManager = manager;
+            sceneSaveManager = manager;
         }
 
-        private void Start()
-        {
-            sceneSaveSystemManager.RestoreScene();
-        }
-        
         [Button]
         public void Load()
         {
-            sceneSaveSystemManager.RestoreScene();
+            sceneSaveManager.LoadScene();
         }
 
         [Button]
         public void Save()
         {
-            sceneSaveSystemManager.CaptureScene();
+            sceneSaveManager.SaveScene();
         }
     }
 }
