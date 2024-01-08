@@ -3,13 +3,7 @@ using SaveSystem.Data;
 using UnityEngine;
 
 namespace SaveSystem.Core
-{
-    public enum SaveAblesTypes
-    {
-        Unit,
-        Resource
-    }
-    
+{  
     public class SceneSaveManager
     {
         private readonly List<ISaveAble> saveAbles;

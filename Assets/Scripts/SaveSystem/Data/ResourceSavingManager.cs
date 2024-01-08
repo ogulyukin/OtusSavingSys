@@ -27,7 +27,7 @@ namespace SaveSystem.Data
                 {
                     {"ID", res.ID},
                     {"Amount", res.Amount.ToString()},
-                    {"SaveAbleType", Convert.ToInt32(SaveAblesTypes.Resource).ToString()},
+                    {"SaveAbleType", "Resource"},
                     {"Scene", sceneIndex.ToString()}
                 };
                 resources.Add(state);
@@ -41,11 +41,11 @@ namespace SaveSystem.Data
             resources.Clear();
             var existingResources = Object.FindObjectsOfType<Resource>();
            
-            foreach (var entry in loadedData)
+            foreach (var data in loadedData)
             {
-                if ((SaveAblesTypes) Convert.ToInt32(entry["SaveAbleType"]) == SaveAblesTypes.Resource)
+                if (data["SaveAbleType"] == "Resource")
                 {
-                    resources.Add(entry);
+                    resources.Add(data);
                 }
             }
             foreach (var res in existingResources)

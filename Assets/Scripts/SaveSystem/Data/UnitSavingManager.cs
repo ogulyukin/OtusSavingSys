@@ -39,7 +39,7 @@ namespace SaveSystem.Data
                     {"RotationZ", unit.Rotation.z.ToString()},
                     {"HP", unit.HitPoints.ToString()},
                     {"Type", unit.Type},
-                    {"SaveAbleType", Convert.ToInt32(SaveAblesTypes.Unit).ToString()},
+                    {"SaveAbleType", "Unit"},
                     {"Scene", sceneIndex.ToString()}
                 };
                 units.Add(state);
@@ -73,7 +73,7 @@ namespace SaveSystem.Data
             units.Clear();
             foreach (var data in loadedData)
             {
-                if ((SaveAblesTypes) Convert.ToInt32(data["SaveAbleType"]) == SaveAblesTypes.Unit)
+                if (data["SaveAbleType"] == "Unit")
                 {
                     units.Add(data);
                 }
